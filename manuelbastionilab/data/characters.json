@@ -1,0 +1,140 @@
+{"character_list":
+    [
+    "human_female_base01",
+    "human_female_base02",
+    "human_female_base03",
+    "human_male_base01",
+    "human_male_base02",
+    "human_male_base03",
+    "anime_female_base01",
+    "anime_female_base02",
+    "anime_male_base01",
+    "anime_male_base02",
+    "human_female_anime01",
+    "human_male_anime01",
+    "human_female_elf01",
+    "human_male_elf01",
+    "human_male_dwarf01"
+    ],
+    
+    "human_female_base01":
+    {
+        "description": "Generate a realistic Caucasian female character",
+        "reference_model": "human_female",
+        "label": "Caucasian female",
+        "starting_pose": "standing_basic.json",
+        "texture_details": "human_female_base_details.png"
+    },
+    "human_female_base02":
+    {
+        "description": "Generate a realistic Asian female character",
+        "reference_model": "human_female",
+        "label": "Asian female",
+        "starting_pose": "standing_basic.json",
+        "texture_details": "human_female_base_details.png"
+    },
+    "human_female_base03":
+    {
+        "description": "Generate a realistic Afro female character",
+        "reference_model": "human_female",
+        "label": "Afro female",
+        "starting_pose": "standing_basic.json",
+        "texture_details": "human_female_base_details.png"
+    },
+    "human_male_base01":
+    {
+        "description": "Generate a realistic Caucasian male character",
+        "reference_model": "human_male",
+        "label": "Caucasian male",
+        "starting_pose": "standing_basic.json",
+        "texture_details": "human_male_base_details.png"
+    },
+    "human_male_base02":
+    {
+        "description": "Generate a realistic Asian male character",
+        "reference_model": "human_male",
+        "label": "Asian male",
+        "starting_pose": "standing_basic.json",
+        "texture_details": "human_male_base_details.png"
+    },
+    "human_male_base03":
+    {
+        "description": "Generate a realistic Afro male character",
+        "reference_model": "human_male",
+        "label": "Afro male",
+        "starting_pose": "standing_basic.json",
+        "texture_details": "human_male_base_details.png"
+    },
+    "anime_female_base01":
+    {
+        "description": "Generate an anime female in shojo style",
+        "reference_model": "anime_female",
+        "label": "Anime classic female shojo",
+        "starting_pose": "pinup01.json",
+        "texture_details": "anime_female_base_details.png"
+    },
+    "anime_female_base02":
+    {
+        "description": "Generate an anime female in modern style",
+        "reference_model": "anime_female",
+        "label": "Anime modern female shojo",
+        "starting_pose": "pinup01.json",
+        "texture_details": "anime_female_base_details.png"
+    },
+    "anime_male_base01":
+    {
+        "description": "Generate an anime male in shojo style",
+        "reference_model": "anime_male",
+        "label": "Anime classic male shojo",
+        "starting_pose": "standing_basic.json",
+        "texture_details": "anime_male_base_details.png"
+    },
+    "anime_male_base02":
+    {
+        "description": "Generate an anime male in modern style",
+        "reference_model": "anime_male",
+        "label": "Anime modern male shojo",
+        "starting_pose": "standing_basic.json",
+        "texture_details": "anime_male_base_details.png"
+    },
+    "human_female_anime01":
+    {
+        "description": "Generate an anime female in realistic style",
+        "reference_model": "human_female",
+        "label": "Anime realistic female",
+        "starting_pose": "pinup01.json",
+        "texture_details": "human_female_base_details.png"
+    },
+    "human_male_anime01":
+    {
+        "description": "Generate an anime male in realistic style",
+        "reference_model": "human_male",
+        "label": "Anime realistic male",
+        "starting_pose": "standing_basic.json",
+        "texture_details": "human_male_base_details.png"
+    },
+    "human_female_elf01":
+    {
+        "description": "Generate a female elf",
+        "reference_model": "human_female",
+        "label": "Fantasy female elf",
+        "starting_pose": "pinup01.json",
+        "texture_details": "human_female_elf_details.png"
+    },
+    "human_male_elf01":
+    {
+        "description": "Generate a male elf",
+        "reference_model": "human_male",
+        "label": "Fantasy male elf",
+        "starting_pose": "standing_basic.json",
+        "texture_details": "human_male_elf_details.png"
+    },
+    "human_male_dwarf01":
+    {
+        "description": "Generate an epic dwarf",
+        "reference_model": "human_male",
+        "label": "Fantasy male dwarf",
+        "starting_pose": "standing_basic.json",
+        "texture_details": "human_male_base_details.png"
+    }
+}

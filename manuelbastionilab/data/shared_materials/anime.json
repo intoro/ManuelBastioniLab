@@ -1,0 +1,3546 @@
+{
+ "license": "GNU Affero General Public License",
+ "groups": [
+  {
+   "name": "Anime_Contour",
+   "inputs": [
+    {
+     "name": "Size",
+     "type": "NodeSocketFloat",
+     "max_value": 1000.0,
+     "min_value": 0.0
+    },
+    {
+     "name": "Main color",
+     "type": "NodeSocketColor"
+    },
+    {
+     "name": "Contour color",
+     "type": "NodeSocketColor"
+    },
+    {
+     "name": "Value",
+     "type": "NodeSocketFloatFactor",
+     "max_value": 1.0,
+     "min_value": 0.0
+    }
+   ],
+   "outputs": [
+    {
+     "name": "Color",
+     "type": "NodeSocketColor"
+    }
+   ],
+   "type": "ShaderNodeTree",
+   "nodes": [
+    {
+     "name": "Group Input",
+     "height": 100.0,
+     "inputs": [],
+     "location": [
+      -317.3448791503906,
+      -0.0
+     ],
+     "bl_idname": "NodeGroupInput",
+     "outputs": [],
+     "label": "",
+     "width": 140.0
+    },
+    {
+     "name": "Group Output",
+     "height": 100.0,
+     "inputs": [],
+     "location": [
+      557.3448486328125,
+      13.551952362060547
+     ],
+     "bl_idname": "NodeGroupOutput",
+     "outputs": [],
+     "label": "",
+     "width": 140.0
+    },
+    {
+     "name": "Mix",
+     "height": 100.0,
+     "inputs": [
+      {
+       "name": "Fac",
+       "default_value": 0.5,
+       "type": "NodeSocketFloatFactor"
+      },
+      {
+       "name": "Color1",
+       "default_value": [
+        0.5,
+        0.5,
+        0.5,
+        1.0
+       ],
+       "type": "NodeSocketColor"
+      },
+      {
+       "name": "Color2",
+       "default_value": [
+        0.5,
+        0.5,
+        0.5,
+        1.0
+       ],
+       "type": "NodeSocketColor"
+      }
+     ],
+     "location": [
+      337.3448791503906,
+      -2.2586669921875
+     ],
+     "bl_idname": "ShaderNodeMixRGB",
+     "outputs": [
+      {
+       "name": "Color",
+       "default_value": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+       ],
+       "type": "NodeSocketColor"
+      }
+     ],
+     "use_clamp": false,
+     "blend_type": "MIX",
+     "use_alpha": false,
+     "label": "",
+     "width": 140.0
+    },
+    {
+     "name": "Fresnel.003",
+     "height": 100.0,
+     "inputs": [
+      {
+       "name": "IOR",
+       "default_value": 0.8500000238418579,
+       "type": "NodeSocketFloat"
+      },
+      {
+       "name": "Normal",
+       "default_value": [
+        0.0,
+        0.0,
+        0.0
+       ],
+       "type": "NodeSocketVector"
+      }
+     ],
+     "location": [
+      -120.35394287109375,
+      133.49533081054688
+     ],
+     "bl_idname": "ShaderNodeFresnel",
+     "outputs": [
+      {
+       "name": "Fac",
+       "default_value": 0.0,
+       "type": "NodeSocketFloatFactor"
+      }
+     ],
+     "label": "",
+     "width": 140.0
+    },
+    {
+     "name": "Mix.008",
+     "height": 100.0,
+     "inputs": [
+      {
+       "name": "Fac",
+       "default_value": 0.5,
+       "type": "NodeSocketFloatFactor"
+      },
+      {
+       "name": "Color1",
+       "default_value": [
+        0.5,
+        0.5,
+        0.5,
+        1.0
+       ],
+       "type": "NodeSocketColor"
+      },
+      {
+       "name": "Color2",
+       "default_value": [
+        0.2689119577407837,
+        0.04479585215449333,
+        0.01042848639190197,
+        1.0
+       ],
+       "type": "NodeSocketColor"
+      }
+     ],
+     "location": [
+      99.29056549072266,
+      151.09564208984375
+     ],
+     "bl_idname": "ShaderNodeMixRGB",
+     "outputs": [
+      {
+       "name": "Color",
+       "default_value": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+       ],
+       "type": "NodeSocketColor"
+      }
+     ],
+     "use_clamp": false,
+     "blend_type": "MIX",
+     "use_alpha": false,
+     "label": "",
+     "width": 140.0
+    }
+   ],
+   "links": [
+    {
+     "to_node": "Mix.008",
+     "to_socket": 0,
+     "from_node": "Fresnel.003",
+     "from_socket": 0
+    },
+    {
+     "to_node": "Fresnel.003",
+     "to_socket": 0,
+     "from_node": "Group Input",
+     "from_socket": 0
+    },
+    {
+     "to_node": "Mix",
+     "to_socket": 2,
+     "from_node": "Mix.008",
+     "from_socket": 0
+    },
+    {
+     "to_node": "Mix.008",
+     "to_socket": 1,
+     "from_node": "Group Input",
+     "from_socket": 1
+    },
+    {
+     "to_node": "Mix.008",
+     "to_socket": 2,
+     "from_node": "Group Input",
+     "from_socket": 2
+    },
+    {
+     "to_node": "Group Output",
+     "to_socket": 0,
+     "from_node": "Mix",
+     "from_socket": 0
+    },
+    {
+     "to_node": "Mix",
+     "to_socket": 0,
+     "from_node": "Group Input",
+     "from_socket": 3
+    },
+    {
+     "to_node": "Mix",
+     "to_socket": 1,
+     "from_node": "Group Input",
+     "from_socket": 1
+    }
+   ]
+  },
+  {
+   "name": "Anime_main_color",
+   "inputs": [
+    {
+     "name": "Color",
+     "type": "NodeSocketColor"
+    },
+    {
+     "name": "Saturation",
+     "type": "NodeSocketFloat",
+     "max_value": 10000.0,
+     "min_value": -10000.0
+    },
+    {
+     "name": "Value",
+     "type": "NodeSocketFloat",
+     "max_value": 2.0,
+     "min_value": 0.0
+    },
+    {
+     "name": "Hue",
+     "type": "NodeSocketFloat",
+     "max_value": 1.0,
+     "min_value": 0.0
+    }
+   ],
+   "outputs": [
+    {
+     "name": "Color",
+     "type": "NodeSocketColor"
+    }
+   ],
+   "type": "ShaderNodeTree",
+   "nodes": [
+    {
+     "name": "Group Output",
+     "height": 100.0,
+     "inputs": [],
+     "location": [
+      526.8485717773438,
+      -164.31134033203125
+     ],
+     "bl_idname": "NodeGroupOutput",
+     "outputs": [],
+     "label": "",
+     "width": 140.0
+    },
+    {
+     "name": "Group Input",
+     "height": 100.0,
+     "inputs": [],
+     "location": [
+      -327.41998291015625,
+      -163.05709838867188
+     ],
+     "bl_idname": "NodeGroupInput",
+     "outputs": [],
+     "label": "",
+     "width": 140.0
+    },
+    {
+     "name": "Math.002",
+     "height": 100.0,
+     "inputs": [
+      {
+       "name": "Value",
+       "default_value": 0.5,
+       "type": "NodeSocketFloat"
+      },
+      {
+       "name": "Value",
+       "default_value": 2.0,
+       "type": "NodeSocketFloat"
+      }
+     ],
+     "location": [
+      -20.692846298217773,
+      25.168197631835938
+     ],
+     "bl_idname": "ShaderNodeMath",
+     "outputs": [
+      {
+       "name": "Value",
+       "default_value": 0.0,
+       "type": "NodeSocketFloat"
+      }
+     ],
+     "operation": "MULTIPLY",
+     "use_clamp": false,
+     "label": "",
+     "width": 140.0
+    },
+    {
+     "name": "Hue Saturation Value.001",
+     "height": 100.0,
+     "inputs": [
+      {
+       "name": "Hue",
+       "default_value": 0.5,
+       "type": "NodeSocketFloat"
+      },
+      {
+       "name": "Saturation",
+       "default_value": 1.0,
+       "type": "NodeSocketFloat"
+      },
+      {
+       "name": "Value",
+       "default_value": 1.0,
+       "type": "NodeSocketFloat"
+      },
+      {
+       "name": "Fac",
+       "default_value": 1.0,
+       "type": "NodeSocketFloatFactor"
+      },
+      {
+       "name": "Color",
+       "default_value": [
+        0.800000011920929,
+        0.800000011920929,
+        0.800000011920929,
+        1.0
+       ],
+       "type": "NodeSocketColor"
+      }
+     ],
+     "location": [
+      296.7461242675781,
+      -161.87738037109375
+     ],
+     "bl_idname": "ShaderNodeHueSaturation",
+     "outputs": [
+      {
+       "name": "Color",
+       "default_value": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+       ],
+       "type": "NodeSocketColor"
+      }
+     ],
+     "label": "",
+     "width": 150.0
+    }
+   ],
+   "links": [
+    {
+     "to_node": "Hue Saturation Value.001",
+     "to_socket": 1,
+     "from_node": "Math.002",
+     "from_socket": 0
+    },
+    {
+     "to_node": "Math.002",
+     "to_socket": 0,
+     "from_node": "Group Input",
+     "from_socket": 1
+    },
+    {
+     "to_node": "Hue Saturation Value.001",
+     "to_socket": 4,
+     "from_node": "Group Input",
+     "from_socket": 0
+    },
+    {
+     "to_node": "Hue Saturation Value.001",
+     "to_socket": 2,
+     "from_node": "Group Input",
+     "from_socket": 2
+    },
+    {
+     "to_node": "Hue Saturation Value.001",
+     "to_socket": 0,
+     "from_node": "Group Input",
+     "from_socket": 3
+    },
+    {
+     "to_node": "Group Output",
+     "to_socket": 0,
+     "from_node": "Hue Saturation Value.001",
+     "from_socket": 0
+    }
+   ]
+  },
+  {
+   "name": "Anime_oil",
+   "inputs": [
+    {
+     "name": "Color",
+     "type": "NodeSocketColor"
+    },
+    {
+     "name": "Value",
+     "type": "NodeSocketFloat",
+     "max_value": 100.0,
+     "min_value": -100.0
+    },
+    {
+     "name": "Size",
+     "type": "NodeSocketFloat",
+     "max_value": 1000.0,
+     "min_value": 0.0
+    }
+   ],
+   "outputs": [
+    {
+     "name": "Color",
+     "type": "NodeSocketColor"
+    }
+   ],
+   "type": "ShaderNodeTree",
+   "nodes": [
+    {
+     "name": "Mix.009",
+     "height": 100.0,
+     "inputs": [
+      {
+       "name": "Fac",
+       "default_value": 0.5,
+       "type": "NodeSocketFloatFactor"
+      },
+      {
+       "name": "Color1",
+       "default_value": [
+        0.5,
+        0.5,
+        0.5,
+        1.0
+       ],
+       "type": "NodeSocketColor"
+      },
+      {
+       "name": "Color2",
+       "default_value": [
+        0.2689119577407837,
+        0.04479585215449333,
+        0.01042848639190197,
+        1.0
+       ],
+       "type": "NodeSocketColor"
+      }
+     ],
+     "location": [
+      278.288818359375,
+      -0.44622802734375
+     ],
+     "bl_idname": "ShaderNodeMixRGB",
+     "outputs": [
+      {
+       "name": "Color",
+       "default_value": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+       ],
+       "type": "NodeSocketColor"
+      }
+     ],
+     "use_clamp": false,
+     "blend_type": "MIX",
+     "use_alpha": false,
+     "label": "",
+     "width": 140.0
+    },
+    {
+     "name": "Bright/Contrast",
+     "height": 100.0,
+     "inputs": [
+      {
+       "name": "Color",
+       "default_value": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+       ],
+       "type": "NodeSocketColor"
+      },
+      {
+       "name": "Bright",
+       "default_value": 1.0,
+       "type": "NodeSocketFloat"
+      },
+      {
+       "name": "Contrast",
+       "default_value": 0.0,
+       "type": "NodeSocketFloat"
+      }
+     ],
+     "location": [
+      -243.7748260498047,
+      -241.67129516601562
+     ],
+     "bl_idname": "ShaderNodeBrightContrast",
+     "outputs": [
+      {
+       "name": "Color",
+       "default_value": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+       ],
+       "type": "NodeSocketColor"
+      }
+     ],
+     "label": "",
+     "width": 140.0
+    },
+    {
+     "name": "Group Input",
+     "height": 100.0,
+     "inputs": [],
+     "location": [
+      -579.4983520507812,
+      -209.7449493408203
+     ],
+     "bl_idname": "NodeGroupInput",
+     "outputs": [],
+     "label": "",
+     "width": 140.0
+    },
+    {
+     "name": "Group Output",
+     "height": 100.0,
+     "inputs": [],
+     "location": [
+      506.8656311035156,
+      -32.17679214477539
+     ],
+     "bl_idname": "NodeGroupOutput",
+     "outputs": [],
+     "label": "",
+     "width": 140.0
+    },
+    {
+     "name": "Fresnel.004",
+     "height": 100.0,
+     "inputs": [
+      {
+       "name": "IOR",
+       "default_value": 0.3500000536441803,
+       "type": "NodeSocketFloat"
+      },
+      {
+       "name": "Normal",
+       "default_value": [
+        0.0,
+        0.0,
+        0.0
+       ],
+       "type": "NodeSocketVector"
+      }
+     ],
+     "location": [
+      47.56822967529297,
+      13.410619735717773
+     ],
+     "bl_idname": "ShaderNodeFresnel",
+     "outputs": [
+      {
+       "name": "Fac",
+       "default_value": 0.0,
+       "type": "NodeSocketFloatFactor"
+      }
+     ],
+     "label": "",
+     "width": 140.0
+    },
+    {
+     "name": "Normal.001",
+     "height": 100.0,
+     "inputs": [
+      {
+       "name": "Normal",
+       "default_value": [
+        0.0,
+        0.0,
+        0.0
+       ],
+       "type": "NodeSocketVectorDirection"
+      }
+     ],
+     "location": [
+      -424.3150329589844,
+      186.65643310546875
+     ],
+     "bl_idname": "ShaderNodeNormal",
+     "outputs": [
+      {
+       "name": "Normal",
+       "default_value": [
+        -0.5310567021369934,
+        -0.7744576334953308,
+        -0.34379369020462036
+       ],
+       "type": "NodeSocketVectorDirection"
+      },
+      {
+       "name": "Dot",
+       "default_value": 0.0,
+       "type": "NodeSocketFloat"
+      }
+     ],
+     "label": "",
+     "width": 140.0
+    },
+    {
+     "name": "Vector Math",
+     "height": 100.0,
+     "inputs": [
+      {
+       "name": "Vector",
+       "default_value": [
+        0.5,
+        0.5,
+        0.5
+       ],
+       "type": "NodeSocketVector"
+      },
+      {
+       "name": "Vector",
+       "default_value": [
+        0.5,
+        0.5,
+        0.5
+       ],
+       "type": "NodeSocketVector"
+      }
+     ],
+     "location": [
+      -160.28269958496094,
+      149.8634490966797
+     ],
+     "bl_idname": "ShaderNodeVectorMath",
+     "outputs": [
+      {
+       "name": "Vector",
+       "default_value": [
+        0.0,
+        0.0,
+        0.0
+       ],
+       "type": "NodeSocketVector"
+      },
+      {
+       "name": "Value",
+       "default_value": 0.0,
+       "type": "NodeSocketFloat"
+      }
+     ],
+     "operation": "AVERAGE",
+     "label": "",
+     "width": 140.0
+    },
+    {
+     "name": "Geometry.001",
+     "height": 100.0,
+     "inputs": [],
+     "location": [
+      -426.13153076171875,
+      -0.2766876220703125
+     ],
+     "bl_idname": "ShaderNodeNewGeometry",
+     "outputs": [
+      {
+       "name": "Position",
+       "default_value": [
+        0.0,
+        0.0,
+        0.0
+       ],
+       "type": "NodeSocketVector"
+      },
+      {
+       "name": "Normal",
+       "default_value": [
+        0.0,
+        0.0,
+        0.0
+       ],
+       "type": "NodeSocketVector"
+      },
+      {
+       "name": "Tangent",
+       "default_value": [
+        0.0,
+        0.0,
+        0.0
+       ],
+       "type": "NodeSocketVector"
+      },
+      {
+       "name": "True Normal",
+       "default_value": [
+        0.0,
+        0.0,
+        0.0
+       ],
+       "type": "NodeSocketVector"
+      },
+      {
+       "name": "Incoming",
+       "default_value": [
+        0.0,
+        0.0,
+        0.0
+       ],
+       "type": "NodeSocketVector"
+      },
+      {
+       "name": "Parametric",
+       "default_value": [
+        0.0,
+        0.0,
+        0.0
+       ],
+       "type": "NodeSocketVector"
+      },
+      {
+       "name": "Backfacing",
+       "default_value": 0.0,
+       "type": "NodeSocketFloat"
+      },
+      {
+       "name": "Pointiness",
+       "default_value": 0.0,
+       "type": "NodeSocketFloat"
+      }
+     ],
+     "label": "",
+     "width": 140.0
+    }
+   ],
+   "links": [
+    {
+     "to_node": "Mix.009",
+     "to_socket": 0,
+     "from_node": "Fresnel.004",
+     "from_socket": 0
+    },
+    {
+     "to_node": "Group Output",
+     "to_socket": 0,
+     "from_node": "Mix.009",
+     "from_socket": 0
+    },
+    {
+     "to_node": "Mix.009",
+     "to_socket": 2,
+     "from_node": "Group Input",
+     "from_socket": 0
+    },
+    {
+     "to_node": "Bright/Contrast",
+     "to_socket": 0,
+     "from_node": "Group Input",
+     "from_socket": 0
+    },
+    {
+     "to_node": "Mix.009",
+     "to_socket": 1,
+     "from_node": "Bright/Contrast",
+     "from_socket": 0
+    },
+    {
+     "to_node": "Bright/Contrast",
+     "to_socket": 1,
+     "from_node": "Group Input",
+     "from_socket": 1
+    },
+    {
+     "to_node": "Fresnel.004",
+     "to_socket": 0,
+     "from_node": "Group Input",
+     "from_socket": 2
+    },
+    {
+     "to_node": "Vector Math",
+     "to_socket": 0,
+     "from_node": "Normal.001",
+     "from_socket": 0
+    },
+    {
+     "to_node": "Vector Math",
+     "to_socket": 1,
+     "from_node": "Geometry.001",
+     "from_socket": 1
+    },
+    {
+     "to_node": "Fresnel.004",
+     "to_socket": 1,
+     "from_node": "Vector Math",
+     "from_socket": 0
+    }
+   ]
+  },
+  {
+   "name": "Anime_shadeless",
+   "inputs": [
+    {
+     "name": "Color",
+     "type": "NodeSocketColor"
+    }
+   ],
+   "outputs": [
+    {
+     "name": "Shader",
+     "type": "NodeSocketShader"
+    }
+   ],
+   "type": "ShaderNodeTree",
+   "nodes": [
+    {
+     "name": "Emission.001",
+     "height": 100.0,
+     "inputs": [
+      {
+       "name": "Color",
+       "default_value": [
+        1.0,
+        0.3915724754333496,
+        0.28314879536628723,
+        1.0
+       ],
+       "type": "NodeSocketColor"
+      },
+      {
+       "name": "Strength",
+       "default_value": 1.0,
+       "type": "NodeSocketFloat"
+      }
+     ],
+     "location": [
+      -278.88629150390625,
+      -230.94085693359375
+     ],
+     "bl_idname": "ShaderNodeEmission",
+     "outputs": [
+      {
+       "name": "Emission",
+       "type": "NodeSocketShader"
+      }
+     ],
+     "label": "",
+     "width": 140.0
+    },
+    {
+     "name": "Transparent BSDF.001",
+     "height": 100.0,
+     "inputs": [
+      {
+       "name": "Color",
+       "default_value": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+       ],
+       "type": "NodeSocketColor"
+      }
+     ],
+     "location": [
+      -271.97808837890625,
+      -112.94198608398438
+     ],
+     "bl_idname": "ShaderNodeBsdfTransparent",
+     "outputs": [
+      {
+       "name": "BSDF",
+       "type": "NodeSocketShader"
+      }
+     ],
+     "label": "",
+     "width": 140.0
+    },
+    {
+     "name": "Light Path.002",
+     "height": 100.0,
+     "inputs": [],
+     "location": [
+      -155.01568603515625,
+      230.94085693359375
+     ],
+     "bl_idname": "ShaderNodeLightPath",
+     "outputs": [
+      {
+       "name": "Is Camera Ray",
+       "default_value": 0.0,
+       "type": "NodeSocketFloat"
+      },
+      {
+       "name": "Is Shadow Ray",
+       "default_value": 0.0,
+       "type": "NodeSocketFloat"
+      },
+      {
+       "name": "Is Diffuse Ray",
+       "default_value": 0.0,
+       "type": "NodeSocketFloat"
+      },
+      {
+       "name": "Is Glossy Ray",
+       "default_value": 0.0,
+       "type": "NodeSocketFloat"
+      },
+      {
+       "name": "Is Singular Ray",
+       "default_value": 0.0,
+       "type": "NodeSocketFloat"
+      },
+      {
+       "name": "Is Reflection Ray",
+       "default_value": 0.0,
+       "type": "NodeSocketFloat"
+      },
+      {
+       "name": "Is Transmission Ray",
+       "default_value": 0.0,
+       "type": "NodeSocketFloat"
+      },
+      {
+       "name": "Ray Length",
+       "default_value": 0.0,
+       "type": "NodeSocketFloat"
+      },
+      {
+       "name": "Ray Depth",
+       "default_value": 0.0,
+       "type": "NodeSocketFloat"
+      },
+      {
+       "name": "Diffuse Depth",
+       "default_value": 0.0,
+       "type": "NodeSocketFloat"
+      },
+      {
+       "name": "Glossy Depth",
+       "default_value": 0.0,
+       "type": "NodeSocketFloat"
+      },
+      {
+       "name": "Transparent Depth",
+       "default_value": 0.0,
+       "type": "NodeSocketFloat"
+      },
+      {
+       "name": "Transmission Depth",
+       "default_value": 0.0,
+       "type": "NodeSocketFloat"
+      }
+     ],
+     "label": "",
+     "width": 140.0
+    },
+    {
+     "name": "Mix Shader.001",
+     "height": 100.0,
+     "inputs": [
+      {
+       "name": "Fac",
+       "default_value": 0.5,
+       "type": "NodeSocketFloatFactor"
+      },
+      {
+       "name": "Shader",
+       "type": "NodeSocketShader"
+      },
+      {
+       "name": "Shader",
+       "type": "NodeSocketShader"
+      }
+     ],
+     "location": [
+      278.88629150390625,
+      -92.10769653320312
+     ],
+     "bl_idname": "ShaderNodeMixShader",
+     "outputs": [
+      {
+       "name": "Shader",
+       "type": "NodeSocketShader"
+      }
+     ],
+     "label": "",
+     "width": 149.0733642578125
+    },
+    {
+     "name": "Group Input",
+     "height": 100.0,
+     "inputs": [],
+     "location": [
+      -566.8416748046875,
+      -174.4473114013672
+     ],
+     "bl_idname": "NodeGroupInput",
+     "outputs": [],
+     "label": "",
+     "width": 140.0
+    },
+    {
+     "name": "Group Output",
+     "height": 100.0,
+     "inputs": [],
+     "location": [
+      559.5121459960938,
+      -71.83131408691406
+     ],
+     "bl_idname": "NodeGroupOutput",
+     "outputs": [],
+     "label": "",
+     "width": 140.0
+    }
+   ],
+   "links": [
+    {
+     "to_node": "Mix Shader.001",
+     "to_socket": 1,
+     "from_node": "Transparent BSDF.001",
+     "from_socket": 0
+    },
+    {
+     "to_node": "Mix Shader.001",
+     "to_socket": 0,
+     "from_node": "Light Path.002",
+     "from_socket": 0
+    },
+    {
+     "to_node": "Mix Shader.001",
+     "to_socket": 2,
+     "from_node": "Emission.001",
+     "from_socket": 0
+    },
+    {
+     "to_node": "Emission.001",
+     "to_socket": 0,
+     "from_node": "Group Input",
+     "from_socket": 0
+    },
+    {
+     "to_node": "Group Output",
+     "to_socket": 0,
+     "from_node": "Mix Shader.001",
+     "from_socket": 0
+    }
+   ]
+  },
+  {
+   "name": "Anime_smooth",
+   "inputs": [
+    {
+     "name": "Color1",
+     "type": "NodeSocketColor"
+    },
+    {
+     "name": "Smooth",
+     "type": "NodeSocketFloat",
+     "max_value": 1.0,
+     "min_value": 0.0
+    }
+   ],
+   "outputs": [
+    {
+     "name": "Color",
+     "type": "NodeSocketColor"
+    }
+   ],
+   "type": "ShaderNodeTree",
+   "nodes": [
+    {
+     "name": "Mix.008",
+     "height": 100.0,
+     "inputs": [
+      {
+       "name": "Fac",
+       "default_value": 0.5,
+       "type": "NodeSocketFloatFactor"
+      },
+      {
+       "name": "Color1",
+       "default_value": [
+        0.5,
+        0.5,
+        0.5,
+        1.0
+       ],
+       "type": "NodeSocketColor"
+      },
+      {
+       "name": "Color2",
+       "default_value": [
+        0.6297650337219238,
+        0.6297650337219238,
+        0.6297650337219238,
+        1.0
+       ],
+       "type": "NodeSocketColor"
+      }
+     ],
+     "location": [
+      109.9991455078125,
+      -23.59227752685547
+     ],
+     "bl_idname": "ShaderNodeMixRGB",
+     "outputs": [
+      {
+       "name": "Color",
+       "default_value": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+       ],
+       "type": "NodeSocketColor"
+      }
+     ],
+     "use_clamp": false,
+     "blend_type": "MIX",
+     "use_alpha": false,
+     "label": "",
+     "width": 140.0
+    },
+    {
+     "name": "Group Output",
+     "height": 100.0,
+     "inputs": [],
+     "location": [
+      309.9991455078125,
+      -0.0
+     ],
+     "bl_idname": "NodeGroupOutput",
+     "outputs": [],
+     "label": "",
+     "width": 140.0
+    },
+    {
+     "name": "Group Input",
+     "height": 100.0,
+     "inputs": [],
+     "location": [
+      -424.5592956542969,
+      -61.73408889770508
+     ],
+     "bl_idname": "NodeGroupInput",
+     "outputs": [],
+     "label": "",
+     "width": 140.0
+    },
+    {
+     "name": "Bright/Contrast",
+     "height": 100.0,
+     "inputs": [
+      {
+       "name": "Color",
+       "default_value": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+       ],
+       "type": "NodeSocketColor"
+      },
+      {
+       "name": "Bright",
+       "default_value": 0.25,
+       "type": "NodeSocketFloat"
+      },
+      {
+       "name": "Contrast",
+       "default_value": 0.0,
+       "type": "NodeSocketFloat"
+      }
+     ],
+     "location": [
+      -140.4988250732422,
+      -184.32821655273438
+     ],
+     "bl_idname": "ShaderNodeBrightContrast",
+     "outputs": [
+      {
+       "name": "Color",
+       "default_value": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+       ],
+       "type": "NodeSocketColor"
+      }
+     ],
+     "label": "",
+     "width": 140.0
+    },
+    {
+     "name": "Layer Weight.001",
+     "height": 100.0,
+     "inputs": [
+      {
+       "name": "Blend",
+       "default_value": 0.9000000357627869,
+       "type": "NodeSocketFloat"
+      },
+      {
+       "name": "Normal",
+       "default_value": [
+        0.0,
+        0.0,
+        0.0
+       ],
+       "type": "NodeSocketVector"
+      }
+     ],
+     "location": [
+      -109.999267578125,
+      23.59228515625
+     ],
+     "bl_idname": "ShaderNodeLayerWeight",
+     "outputs": [
+      {
+       "name": "Fresnel",
+       "default_value": 0.0,
+       "type": "NodeSocketFloat"
+      },
+      {
+       "name": "Facing",
+       "default_value": 0.0,
+       "type": "NodeSocketFloat"
+      }
+     ],
+     "label": "",
+     "width": 140.0
+    }
+   ],
+   "links": [
+    {
+     "to_node": "Mix.008",
+     "to_socket": 0,
+     "from_node": "Layer Weight.001",
+     "from_socket": 1
+    },
+    {
+     "to_node": "Mix.008",
+     "to_socket": 2,
+     "from_node": "Group Input",
+     "from_socket": 0
+    },
+    {
+     "to_node": "Bright/Contrast",
+     "to_socket": 0,
+     "from_node": "Group Input",
+     "from_socket": 0
+    },
+    {
+     "to_node": "Group Output",
+     "to_socket": 0,
+     "from_node": "Mix.008",
+     "from_socket": 0
+    },
+    {
+     "to_node": "Layer Weight.001",
+     "to_socket": 0,
+     "from_node": "Group Input",
+     "from_socket": 1
+    },
+    {
+     "to_node": "Mix.008",
+     "to_socket": 1,
+     "from_node": "Bright/Contrast",
+     "from_socket": 0
+    }
+   ]
+  },
+  {
+   "name": "Anime_tone",
+   "inputs": [
+    {
+     "name": "Color",
+     "type": "NodeSocketColor"
+    },
+    {
+     "name": "Value",
+     "type": "NodeSocketFloat",
+     "max_value": 100.0,
+     "min_value": -100.0
+    },
+    {
+     "name": "Size",
+     "type": "NodeSocketFloat",
+     "max_value": 1000.0,
+     "min_value": 0.0
+    }
+   ],
+   "outputs": [
+    {
+     "name": "Color",
+     "type": "NodeSocketColor"
+    }
+   ],
+   "type": "ShaderNodeTree",
+   "nodes": [
+    {
+     "name": "Mix.008",
+     "height": 100.0,
+     "inputs": [
+      {
+       "name": "Fac",
+       "default_value": 0.5,
+       "type": "NodeSocketFloatFactor"
+      },
+      {
+       "name": "Color1",
+       "default_value": [
+        0.5,
+        0.5,
+        0.5,
+        1.0
+       ],
+       "type": "NodeSocketColor"
+      },
+      {
+       "name": "Color2",
+       "default_value": [
+        0.2689119577407837,
+        0.04479585215449333,
+        0.01042848639190197,
+        1.0
+       ],
+       "type": "NodeSocketColor"
+      }
+     ],
+     "location": [
+      577.6688232421875,
+      -118.1363525390625
+     ],
+     "bl_idname": "ShaderNodeMixRGB",
+     "outputs": [
+      {
+       "name": "Color",
+       "default_value": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+       ],
+       "type": "NodeSocketColor"
+      }
+     ],
+     "use_clamp": true,
+     "blend_type": "MIX",
+     "use_alpha": false,
+     "label": "",
+     "width": 140.0
+    },
+    {
+     "name": "Math.004",
+     "height": 100.0,
+     "inputs": [
+      {
+       "name": "Value",
+       "default_value": 1.0,
+       "type": "NodeSocketFloat"
+      },
+      {
+       "name": "Value",
+       "default_value": 1.0,
+       "type": "NodeSocketFloat"
+      }
+     ],
+     "location": [
+      348.1548156738281,
+      61.420684814453125
+     ],
+     "bl_idname": "ShaderNodeMath",
+     "outputs": [
+      {
+       "name": "Value",
+       "default_value": 0.0,
+       "type": "NodeSocketFloat"
+      }
+     ],
+     "operation": "MINIMUM",
+     "use_clamp": true,
+     "label": "",
+     "width": 140.0
+    },
+    {
+     "name": "Fresnel.003",
+     "height": 100.0,
+     "inputs": [
+      {
+       "name": "IOR",
+       "default_value": 0.800000011920929,
+       "type": "NodeSocketFloat"
+      },
+      {
+       "name": "Normal",
+       "default_value": [
+        0.0,
+        0.0,
+        0.0
+       ],
+       "type": "NodeSocketVector"
+      }
+     ],
+     "location": [
+      96.23906707763672,
+      -50.37213134765625
+     ],
+     "bl_idname": "ShaderNodeFresnel",
+     "outputs": [
+      {
+       "name": "Fac",
+       "default_value": 0.0,
+       "type": "NodeSocketFloatFactor"
+      }
+     ],
+     "label": "",
+     "width": 140.0
+    },
+    {
+     "name": "Math.002",
+     "height": 100.0,
+     "inputs": [
+      {
+       "name": "Value",
+       "default_value": 0.5,
+       "type": "NodeSocketFloat"
+      },
+      {
+       "name": "Value",
+       "default_value": 1.0,
+       "type": "NodeSocketFloat"
+      }
+     ],
+     "location": [
+      -107.29437255859375,
+      120.95919799804688
+     ],
+     "bl_idname": "ShaderNodeMath",
+     "outputs": [
+      {
+       "name": "Value",
+       "default_value": 0.0,
+       "type": "NodeSocketFloat"
+      }
+     ],
+     "operation": "POWER",
+     "use_clamp": false,
+     "label": "",
+     "width": 140.0
+    },
+    {
+     "name": "Vector Math",
+     "height": 100.0,
+     "inputs": [
+      {
+       "name": "Vector",
+       "default_value": [
+        0.5,
+        0.5,
+        0.5
+       ],
+       "type": "NodeSocketVector"
+      },
+      {
+       "name": "Vector",
+       "default_value": [
+        0.5,
+        0.5,
+        0.5
+       ],
+       "type": "NodeSocketVector"
+      }
+     ],
+     "location": [
+      -309.6400451660156,
+      117.71607971191406
+     ],
+     "bl_idname": "ShaderNodeVectorMath",
+     "outputs": [
+      {
+       "name": "Vector",
+       "default_value": [
+        0.0,
+        0.0,
+        0.0
+       ],
+       "type": "NodeSocketVector"
+      },
+      {
+       "name": "Value",
+       "default_value": 0.0,
+       "type": "NodeSocketFloat"
+      }
+     ],
+     "operation": "DOT_PRODUCT",
+     "label": "",
+     "width": 140.0
+    },
+    {
+     "name": "Normal",
+     "height": 100.0,
+     "inputs": [
+      {
+       "name": "Normal",
+       "default_value": [
+        0.0,
+        0.0,
+        0.0
+       ],
+       "type": "NodeSocketVectorDirection"
+      }
+     ],
+     "location": [
+      -574.73779296875,
+      -1.11077880859375
+     ],
+     "bl_idname": "ShaderNodeNormal",
+     "outputs": [
+      {
+       "name": "Normal",
+       "default_value": [
+        0.8583333492279053,
+        -0.3083333373069763,
+        0.41011518239974976
+       ],
+       "type": "NodeSocketVectorDirection"
+      },
+      {
+       "name": "Dot",
+       "default_value": 0.0,
+       "type": "NodeSocketFloat"
+      }
+     ],
+     "label": "",
+     "width": 140.0
+    },
+    {
+     "name": "Geometry",
+     "height": 100.0,
+     "inputs": [],
+     "location": [
+      -577.6688232421875,
+      273.02325439453125
+     ],
+     "bl_idname": "ShaderNodeNewGeometry",
+     "outputs": [
+      {
+       "name": "Position",
+       "default_value": [
+        0.0,
+        0.0,
+        0.0
+       ],
+       "type": "NodeSocketVector"
+      },
+      {
+       "name": "Normal",
+       "default_value": [
+        0.0,
+        0.0,
+        0.0
+       ],
+       "type": "NodeSocketVector"
+      },
+      {
+       "name": "Tangent",
+       "default_value": [
+        0.0,
+        0.0,
+        0.0
+       ],
+       "type": "NodeSocketVector"
+      },
+      {
+       "name": "True Normal",
+       "default_value": [
+        0.0,
+        0.0,
+        0.0
+       ],
+       "type": "NodeSocketVector"
+      },
+      {
+       "name": "Incoming",
+       "default_value": [
+        0.0,
+        0.0,
+        0.0
+       ],
+       "type": "NodeSocketVector"
+      },
+      {
+       "name": "Parametric",
+       "default_value": [
+        0.0,
+        0.0,
+        0.0
+       ],
+       "type": "NodeSocketVector"
+      },
+      {
+       "name": "Backfacing",
+       "default_value": 0.0,
+       "type": "NodeSocketFloat"
+      },
+      {
+       "name": "Pointiness",
+       "default_value": 0.0,
+       "type": "NodeSocketFloat"
+      }
+     ],
+     "label": "",
+     "width": 140.0
+    },
+    {
+     "name": "Group Output",
+     "height": 100.0,
+     "inputs": [],
+     "location": [
+      777.6688232421875,
+      -0.0
+     ],
+     "bl_idname": "NodeGroupOutput",
+     "outputs": [],
+     "label": "",
+     "width": 140.0
+    },
+    {
+     "name": "Group Input",
+     "height": 100.0,
+     "inputs": [],
+     "location": [
+      -745.1400756835938,
+      -206.7367706298828
+     ],
+     "bl_idname": "NodeGroupInput",
+     "outputs": [],
+     "label": "",
+     "width": 140.0
+    },
+    {
+     "name": "Bright/Contrast",
+     "height": 100.0,
+     "inputs": [
+      {
+       "name": "Color",
+       "default_value": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+       ],
+       "type": "NodeSocketColor"
+      },
+      {
+       "name": "Bright",
+       "default_value": -0.19999998807907104,
+       "type": "NodeSocketFloat"
+      },
+      {
+       "name": "Contrast",
+       "default_value": 0.0,
+       "type": "NodeSocketFloat"
+      }
+     ],
+     "location": [
+      237.51678466796875,
+      -273.02325439453125
+     ],
+     "bl_idname": "ShaderNodeBrightContrast",
+     "outputs": [
+      {
+       "name": "Color",
+       "default_value": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+       ],
+       "type": "NodeSocketColor"
+      }
+     ],
+     "label": "",
+     "width": 140.0
+    },
+    {
+     "name": "Math.003",
+     "height": 100.0,
+     "inputs": [
+      {
+       "name": "Value",
+       "default_value": 1.0,
+       "type": "NodeSocketFloat"
+      },
+      {
+       "name": "Value",
+       "default_value": 1.0,
+       "type": "NodeSocketFloat"
+      }
+     ],
+     "location": [
+      94.18928527832031,
+      120.02899169921875
+     ],
+     "bl_idname": "ShaderNodeMath",
+     "outputs": [
+      {
+       "name": "Value",
+       "default_value": 0.0,
+       "type": "NodeSocketFloat"
+      }
+     ],
+     "operation": "SUBTRACT",
+     "use_clamp": true,
+     "label": "",
+     "width": 140.0
+    },
+    {
+     "name": "Math.005",
+     "height": 100.0,
+     "inputs": [
+      {
+       "name": "Value",
+       "default_value": 1.0,
+       "type": "NodeSocketFloat"
+      },
+      {
+       "name": "Value",
+       "default_value": -1.0,
+       "type": "NodeSocketFloat"
+      }
+     ],
+     "location": [
+      -99.25674438476562,
+      -324.2900695800781
+     ],
+     "bl_idname": "ShaderNodeMath",
+     "outputs": [
+      {
+       "name": "Value",
+       "default_value": 0.0,
+       "type": "NodeSocketFloat"
+      }
+     ],
+     "operation": "MULTIPLY",
+     "use_clamp": false,
+     "label": "",
+     "width": 140.0
+    }
+   ],
+   "links": [
+    {
+     "to_node": "Vector Math",
+     "to_socket": 1,
+     "from_node": "Normal",
+     "from_socket": 0
+    },
+    {
+     "to_node": "Vector Math",
+     "to_socket": 0,
+     "from_node": "Geometry",
+     "from_socket": 1
+    },
+    {
+     "to_node": "Math.002",
+     "to_socket": 0,
+     "from_node": "Vector Math",
+     "from_socket": 1
+    },
+    {
+     "to_node": "Math.003",
+     "to_socket": 1,
+     "from_node": "Math.002",
+     "from_socket": 0
+    },
+    {
+     "to_node": "Mix.008",
+     "to_socket": 2,
+     "from_node": "Bright/Contrast",
+     "from_socket": 0
+    },
+    {
+     "to_node": "Bright/Contrast",
+     "to_socket": 0,
+     "from_node": "Group Input",
+     "from_socket": 0
+    },
+    {
+     "to_node": "Math.004",
+     "to_socket": 0,
+     "from_node": "Math.003",
+     "from_socket": 0
+    },
+    {
+     "to_node": "Math.004",
+     "to_socket": 1,
+     "from_node": "Fresnel.003",
+     "from_socket": 0
+    },
+    {
+     "to_node": "Mix.008",
+     "to_socket": 0,
+     "from_node": "Math.004",
+     "from_socket": 0
+    },
+    {
+     "to_node": "Group Output",
+     "to_socket": 0,
+     "from_node": "Mix.008",
+     "from_socket": 0
+    },
+    {
+     "to_node": "Mix.008",
+     "to_socket": 1,
+     "from_node": "Group Input",
+     "from_socket": 0
+    },
+    {
+     "to_node": "Fresnel.003",
+     "to_socket": 0,
+     "from_node": "Group Input",
+     "from_socket": 2
+    },
+    {
+     "to_node": "Math.005",
+     "to_socket": 0,
+     "from_node": "Group Input",
+     "from_socket": 1
+    },
+    {
+     "to_node": "Bright/Contrast",
+     "to_socket": 1,
+     "from_node": "Math.005",
+     "from_socket": 0
+    }
+   ]
+  }
+ ],
+ "materials": [
+  {
+   "name": "MBLab_anime_skin",
+   "diffuse_color": [
+    0.800000011920929,
+    0.800000011920929,
+    0.800000011920929
+   ],
+   "nodes": [
+    {
+     "name": "skin_saturation",
+     "height": 100.0,
+     "inputs": [],
+     "location": [
+      -719.9264526367188,
+      -139.46212768554688
+     ],
+     "bl_idname": "ShaderNodeValue",
+     "outputs": [
+      {
+       "name": "Value",
+       "default_value": 0.5,
+       "type": "NodeSocketFloat"
+      }
+     ],
+     "label": "skin_saturation",
+     "width": 140.0
+    },
+    {
+     "name": "skin_value",
+     "height": 100.0,
+     "inputs": [],
+     "location": [
+      -722.4322509765625,
+      -231.6416015625
+     ],
+     "bl_idname": "ShaderNodeValue",
+     "outputs": [
+      {
+       "name": "Value",
+       "default_value": 1.0,
+       "type": "NodeSocketFloat"
+      }
+     ],
+     "label": "skin_value",
+     "width": 140.0
+    },
+    {
+     "name": "skin_hue",
+     "height": 100.0,
+     "inputs": [],
+     "location": [
+      -723.4141845703125,
+      -321.3221435546875
+     ],
+     "bl_idname": "ShaderNodeValue",
+     "outputs": [
+      {
+       "name": "Value",
+       "default_value": 0.5,
+       "type": "NodeSocketFloat"
+      }
+     ],
+     "label": "skin_hue",
+     "width": 140.0
+    },
+    {
+     "name": "skin_secondary_val",
+     "height": 100.0,
+     "inputs": [],
+     "location": [
+      -711.7680053710938,
+      138.68994140625
+     ],
+     "bl_idname": "ShaderNodeValue",
+     "outputs": [
+      {
+       "name": "Value",
+       "default_value": 0.20000000298023224,
+       "type": "NodeSocketFloat"
+      }
+     ],
+     "label": "skin_secondary_val",
+     "width": 140.0
+    },
+    {
+     "name": "skin_secondary_size",
+     "height": 100.0,
+     "inputs": [],
+     "location": [
+      -708.9515991210938,
+      231.34930419921875
+     ],
+     "bl_idname": "ShaderNodeValue",
+     "outputs": [
+      {
+       "name": "Value",
+       "default_value": 0.550000011920929,
+       "type": "NodeSocketFloat"
+      }
+     ],
+     "label": "skin_secondary_size",
+     "width": 140.0
+    },
+    {
+     "name": "skin_outline_size",
+     "height": 100.0,
+     "inputs": [],
+     "location": [
+      -716.5014038085938,
+      45.82942199707031
+     ],
+     "bl_idname": "ShaderNodeValue",
+     "outputs": [
+      {
+       "name": "Value",
+       "default_value": 0.9800000190734863,
+       "type": "NodeSocketFloat"
+      }
+     ],
+     "label": "skin_outline_size",
+     "width": 140.0
+    },
+    {
+     "name": "skin_outline_val",
+     "height": 100.0,
+     "inputs": [],
+     "location": [
+      -720.6726684570312,
+      -47.7298583984375
+     ],
+     "bl_idname": "ShaderNodeValue",
+     "outputs": [
+      {
+       "name": "Value",
+       "default_value": 0.800000011920929,
+       "type": "NodeSocketFloat"
+      }
+     ],
+     "label": "skin_outline_val",
+     "width": 140.0
+    },
+    {
+     "name": "skin_smooth",
+     "height": 100.0,
+     "inputs": [],
+     "location": [
+      -708.0984497070312,
+      327.0129089355469
+     ],
+     "bl_idname": "ShaderNodeValue",
+     "outputs": [
+      {
+       "name": "Value",
+       "default_value": 1.0,
+       "type": "NodeSocketFloat"
+      }
+     ],
+     "label": "skin_smooth",
+     "width": 140.0
+    },
+    {
+     "name": "Material Output",
+     "height": 100.0,
+     "inputs": [
+      {
+       "name": "Surface",
+       "type": "NodeSocketShader"
+      },
+      {
+       "name": "Volume",
+       "type": "NodeSocketShader"
+      },
+      {
+       "name": "Displacement",
+       "default_value": 0.0,
+       "type": "NodeSocketFloat"
+      }
+     ],
+     "location": [
+      1652.7347412109375,
+      -398.8518371582031
+     ],
+     "bl_idname": "ShaderNodeOutputMaterial",
+     "outputs": [],
+     "label": "",
+     "width": 140.0
+    },
+    {
+     "name": "skin_oil_val",
+     "height": 100.0,
+     "inputs": [],
+     "location": [
+      -203.8564453125,
+      325.10845947265625
+     ],
+     "bl_idname": "ShaderNodeValue",
+     "outputs": [
+      {
+       "name": "Value",
+       "default_value": 0.20000000298023224,
+       "type": "NodeSocketFloat"
+      }
+     ],
+     "label": "skin_oil_val",
+     "width": 140.0
+    },
+    {
+     "name": "Mix Shader.002",
+     "height": 100.0,
+     "inputs": [
+      {
+       "name": "Fac",
+       "default_value": 0.5,
+       "type": "NodeSocketFloatFactor"
+      },
+      {
+       "name": "Shader",
+       "type": "NodeSocketShader"
+      },
+      {
+       "name": "Shader",
+       "type": "NodeSocketShader"
+      }
+     ],
+     "location": [
+      1453.951171875,
+      -394.75738525390625
+     ],
+     "bl_idname": "ShaderNodeMixShader",
+     "outputs": [
+      {
+       "name": "Shader",
+       "type": "NodeSocketShader"
+      }
+     ],
+     "label": "",
+     "width": 140.0
+    },
+    {
+     "name": "skin_ao_val",
+     "height": 100.0,
+     "inputs": [],
+     "location": [
+      865.296142578125,
+      278.577392578125
+     ],
+     "bl_idname": "ShaderNodeValue",
+     "outputs": [
+      {
+       "name": "Value",
+       "default_value": 0.5,
+       "type": "NodeSocketFloat"
+      }
+     ],
+     "label": "skin_ao_val",
+     "width": 140.0
+    },
+    {
+     "name": "skin_oil_size",
+     "height": 100.0,
+     "inputs": [],
+     "location": [
+      -203.84613037109375,
+      233.64007568359375
+     ],
+     "bl_idname": "ShaderNodeValue",
+     "outputs": [
+      {
+       "name": "Value",
+       "default_value": 0.10000000149011612,
+       "type": "NodeSocketFloat"
+      }
+     ],
+     "label": "skin_oil_size",
+     "width": 140.0
+    },
+    {
+     "name": "Ambient Occlusion",
+     "height": 100.0,
+     "inputs": [
+      {
+       "name": "Color",
+       "default_value": [
+        0.800000011920929,
+        0.800000011920929,
+        0.800000011920929,
+        1.0
+       ],
+       "type": "NodeSocketColor"
+      }
+     ],
+     "location": [
+      836.8727416992188,
+      -532.6651611328125
+     ],
+     "bl_idname": "ShaderNodeAmbientOcclusion",
+     "outputs": [
+      {
+       "name": "AO",
+       "type": "NodeSocketShader"
+      }
+     ],
+     "label": "",
+     "width": 140.0
+    },
+    {
+     "name": "Anime_oil",
+     "height": 100.0,
+     "inputs": [
+      {
+       "name": "Color",
+       "default_value": [
+        0.2689119577407837,
+        0.04479585215449333,
+        0.01042848639190197,
+        1.0
+       ],
+       "type": "NodeSocketColor"
+      },
+      {
+       "name": "Value",
+       "default_value": 0.49999991059303284,
+       "type": "NodeSocketFloat"
+      },
+      {
+       "name": "Size",
+       "default_value": 0.10999999195337296,
+       "type": "NodeSocketFloat"
+      }
+     ],
+     "location": [
+      301.74212646484375,
+      -475.7607727050781
+     ],
+     "bl_idname": "ShaderNodeGroup",
+     "outputs": [
+      {
+       "name": "Color",
+       "default_value": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+       ],
+       "type": "NodeSocketColor"
+      }
+     ],
+     "node_tree": "Anime_oil",
+     "label": "Anime_oil",
+     "width": 140.0
+    },
+    {
+     "name": "Anime_main_color",
+     "height": 100.0,
+     "inputs": [
+      {
+       "name": "Color",
+       "default_value": [
+        0.8000000715255737,
+        0.3030216693878174,
+        0.11843844503164291,
+        1.0
+       ],
+       "type": "NodeSocketColor"
+      },
+      {
+       "name": "Saturation",
+       "default_value": 0.5,
+       "type": "NodeSocketFloat"
+      },
+      {
+       "name": "Value",
+       "default_value": 1.0,
+       "type": "NodeSocketFloat"
+      },
+      {
+       "name": "Hue",
+       "default_value": 0.5,
+       "type": "NodeSocketFloat"
+      }
+     ],
+     "location": [
+      -470.92572021484375,
+      -468.4271240234375
+     ],
+     "bl_idname": "ShaderNodeGroup",
+     "outputs": [
+      {
+       "name": "Color",
+       "default_value": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+       ],
+       "type": "NodeSocketColor"
+      }
+     ],
+     "node_tree": "Anime_main_color",
+     "label": "Anime_main_color",
+     "width": 140.0
+    },
+    {
+     "name": "Anime_smooth",
+     "height": 100.0,
+     "inputs": [
+      {
+       "name": "Color1",
+       "default_value": [
+        0.5,
+        0.5,
+        0.5,
+        1.0
+       ],
+       "type": "NodeSocketColor"
+      },
+      {
+       "name": "Smooth",
+       "default_value": 1.0,
+       "type": "NodeSocketFloat"
+      }
+     ],
+     "location": [
+      526.6338500976562,
+      -448.01800537109375
+     ],
+     "bl_idname": "ShaderNodeGroup",
+     "outputs": [
+      {
+       "name": "Color",
+       "default_value": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+       ],
+       "type": "NodeSocketColor"
+      }
+     ],
+     "node_tree": "Anime_smooth",
+     "label": "Anime_smooth",
+     "width": 140.0
+    },
+    {
+     "name": "Anime_shadeless",
+     "height": 100.0,
+     "inputs": [
+      {
+       "name": "Color",
+       "default_value": [
+        1.0,
+        0.3915724754333496,
+        0.28314879536628723,
+        1.0
+       ],
+       "type": "NodeSocketColor"
+      }
+     ],
+     "location": [
+      836.9078979492188,
+      -395.04754638671875
+     ],
+     "bl_idname": "ShaderNodeGroup",
+     "outputs": [
+      {
+       "name": "Shader",
+       "type": "NodeSocketShader"
+      }
+     ],
+     "node_tree": "Anime_shadeless",
+     "label": "Anime_shadeless",
+     "width": 140.0
+    },
+    {
+     "name": "Anime_tone",
+     "height": 100.0,
+     "inputs": [
+      {
+       "name": "Color",
+       "default_value": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+       ],
+       "type": "NodeSocketColor"
+      },
+      {
+       "name": "Value",
+       "default_value": -1.0,
+       "type": "NodeSocketFloat"
+      },
+      {
+       "name": "Size",
+       "default_value": 0.800000011920929,
+       "type": "NodeSocketFloat"
+      }
+     ],
+     "location": [
+      82.0254898071289,
+      -449.8265686035156
+     ],
+     "bl_idname": "ShaderNodeGroup",
+     "outputs": [
+      {
+       "name": "Color",
+       "default_value": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+       ],
+       "type": "NodeSocketColor"
+      }
+     ],
+     "node_tree": "Anime_tone",
+     "label": "Anime_tone",
+     "width": 140.0
+    },
+    {
+     "name": "Anime_Contour",
+     "height": 100.0,
+     "inputs": [
+      {
+       "name": "Size",
+       "default_value": 0.949999988079071,
+       "type": "NodeSocketFloat"
+      },
+      {
+       "name": "Main color",
+       "default_value": [
+        0.5,
+        0.5,
+        0.5,
+        1.0
+       ],
+       "type": "NodeSocketColor"
+      },
+      {
+       "name": "Contour color",
+       "default_value": [
+        0.0,
+        0.0,
+        0.0,
+        1.0
+       ],
+       "type": "NodeSocketColor"
+      },
+      {
+       "name": "Value",
+       "default_value": 1.0,
+       "type": "NodeSocketFloatFactor"
+      }
+     ],
+     "location": [
+      -150.41384887695312,
+      -463.7757873535156
+     ],
+     "bl_idname": "ShaderNodeGroup",
+     "outputs": [
+      {
+       "name": "Color",
+       "default_value": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+       ],
+       "type": "NodeSocketColor"
+      }
+     ],
+     "node_tree": "Anime_Contour",
+     "label": "Anime_Contour",
+     "width": 140.0
+    },
+    {
+     "name": "Anime_mblab_skn_diffuse",
+     "height": 100.0,
+     "projection": "FLAT",
+     "extension": "REPEAT",
+     "location": [
+      -871.6907958984375,
+      -531.3792114257812
+     ],
+     "projection_blend": 0.0,
+     "width": 192.021728515625,
+     "inputs": [
+      {
+       "name": "Vector",
+       "default_value": [
+        0.0,
+        0.0,
+        0.0
+       ],
+       "type": "NodeSocketVector"
+      }
+     ],
+     "label": "Anime_mblab_skn_diffuse",
+     "bl_idname": "ShaderNodeTexImage",
+     "outputs": [
+      {
+       "name": "Color",
+       "default_value": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+       ],
+       "type": "NodeSocketColor"
+      },
+      {
+       "name": "Alpha",
+       "default_value": 0.0,
+       "type": "NodeSocketFloat"
+      }
+     ],
+     "interpolation": "Linear",
+     "color_space": "COLOR"
+    }
+   ],
+   "links": [
+    {
+     "to_node": "Anime_Contour",
+     "to_socket": 1,
+     "from_node": "Anime_main_color",
+     "from_socket": 0
+    },
+    {
+     "to_node": "Anime_tone",
+     "to_socket": 0,
+     "from_node": "Anime_Contour",
+     "from_socket": 0
+    },
+    {
+     "to_node": "Anime_oil",
+     "to_socket": 0,
+     "from_node": "Anime_tone",
+     "from_socket": 0
+    },
+    {
+     "to_node": "Anime_Contour",
+     "to_socket": 3,
+     "from_node": "skin_outline_val",
+     "from_socket": 0
+    },
+    {
+     "to_node": "Anime_main_color",
+     "to_socket": 1,
+     "from_node": "skin_saturation",
+     "from_socket": 0
+    },
+    {
+     "to_node": "Anime_main_color",
+     "to_socket": 2,
+     "from_node": "skin_value",
+     "from_socket": 0
+    },
+    {
+     "to_node": "Anime_main_color",
+     "to_socket": 3,
+     "from_node": "skin_hue",
+     "from_socket": 0
+    },
+    {
+     "to_node": "Anime_tone",
+     "to_socket": 1,
+     "from_node": "skin_secondary_val",
+     "from_socket": 0
+    },
+    {
+     "to_node": "Anime_tone",
+     "to_socket": 2,
+     "from_node": "skin_secondary_size",
+     "from_socket": 0
+    },
+    {
+     "to_node": "Anime_Contour",
+     "to_socket": 0,
+     "from_node": "skin_outline_size",
+     "from_socket": 0
+    },
+    {
+     "to_node": "Anime_shadeless",
+     "to_socket": 0,
+     "from_node": "Anime_smooth",
+     "from_socket": 0
+    },
+    {
+     "to_node": "Anime_smooth",
+     "to_socket": 0,
+     "from_node": "Anime_oil",
+     "from_socket": 0
+    },
+    {
+     "to_node": "Anime_smooth",
+     "to_socket": 1,
+     "from_node": "skin_smooth",
+     "from_socket": 0
+    },
+    {
+     "to_node": "Material Output",
+     "to_socket": 0,
+     "from_node": "Mix Shader.002",
+     "from_socket": 0
+    },
+    {
+     "to_node": "Ambient Occlusion",
+     "to_socket": 0,
+     "from_node": "Anime_smooth",
+     "from_socket": 0
+    },
+    {
+     "to_node": "Anime_oil",
+     "to_socket": 1,
+     "from_node": "skin_oil_val",
+     "from_socket": 0
+    },
+    {
+     "to_node": "Anime_oil",
+     "to_socket": 2,
+     "from_node": "skin_oil_size",
+     "from_socket": 0
+    },
+    {
+     "to_node": "Mix Shader.002",
+     "to_socket": 0,
+     "from_node": "skin_ao_val",
+     "from_socket": 0
+    },
+    {
+     "to_node": "Mix Shader.002",
+     "to_socket": 1,
+     "from_node": "Ambient Occlusion",
+     "from_socket": 0
+    },
+    {
+     "to_node": "Mix Shader.002",
+     "to_socket": 2,
+     "from_node": "Anime_shadeless",
+     "from_socket": 0
+    },
+    {
+     "to_node": "Anime_main_color",
+     "to_socket": 0,
+     "from_node": "Anime_mblab_skn_diffuse",
+     "from_socket": 0
+    }
+   ]
+  },
+  {
+   "name": "MBlab_generic",
+   "diffuse_color": [
+    0.03067915327847004,
+    0.07789774239063263,
+    0.07996086031198502
+   ],
+   "nodes": [],
+   "links": []
+  },
+  {
+   "name": "MBLab_anime_eyes",
+   "diffuse_color": [
+    0.800000011920929,
+    0.800000011920929,
+    0.800000011920929
+   ],
+   "nodes": [
+    {
+     "name": "Light Path.001",
+     "height": 100.0,
+     "inputs": [],
+     "location": [
+      1255.152099609375,
+      1390.392822265625
+     ],
+     "bl_idname": "ShaderNodeLightPath",
+     "outputs": [
+      {
+       "name": "Is Camera Ray",
+       "default_value": 0.0,
+       "type": "NodeSocketFloat"
+      },
+      {
+       "name": "Is Shadow Ray",
+       "default_value": 0.0,
+       "type": "NodeSocketFloat"
+      },
+      {
+       "name": "Is Diffuse Ray",
+       "default_value": 0.0,
+       "type": "NodeSocketFloat"
+      },
+      {
+       "name": "Is Glossy Ray",
+       "default_value": 0.0,
+       "type": "NodeSocketFloat"
+      },
+      {
+       "name": "Is Singular Ray",
+       "default_value": 0.0,
+       "type": "NodeSocketFloat"
+      },
+      {
+       "name": "Is Reflection Ray",
+       "default_value": 0.0,
+       "type": "NodeSocketFloat"
+      },
+      {
+       "name": "Is Transmission Ray",
+       "default_value": 0.0,
+       "type": "NodeSocketFloat"
+      },
+      {
+       "name": "Ray Length",
+       "default_value": 0.0,
+       "type": "NodeSocketFloat"
+      },
+      {
+       "name": "Ray Depth",
+       "default_value": 0.0,
+       "type": "NodeSocketFloat"
+      },
+      {
+       "name": "Diffuse Depth",
+       "default_value": 0.0,
+       "type": "NodeSocketFloat"
+      },
+      {
+       "name": "Glossy Depth",
+       "default_value": 0.0,
+       "type": "NodeSocketFloat"
+      },
+      {
+       "name": "Transparent Depth",
+       "default_value": 0.0,
+       "type": "NodeSocketFloat"
+      },
+      {
+       "name": "Transmission Depth",
+       "default_value": 0.0,
+       "type": "NodeSocketFloat"
+      }
+     ],
+     "label": "",
+     "width": 140.0
+    },
+    {
+     "name": "Mix Shader",
+     "height": 100.0,
+     "inputs": [
+      {
+       "name": "Fac",
+       "default_value": 0.5,
+       "type": "NodeSocketFloatFactor"
+      },
+      {
+       "name": "Shader",
+       "type": "NodeSocketShader"
+      },
+      {
+       "name": "Shader",
+       "type": "NodeSocketShader"
+      }
+     ],
+     "location": [
+      1689.05419921875,
+      1067.3443603515625
+     ],
+     "bl_idname": "ShaderNodeMixShader",
+     "outputs": [
+      {
+       "name": "Shader",
+       "type": "NodeSocketShader"
+      }
+     ],
+     "label": "",
+     "width": 149.0733642578125
+    },
+    {
+     "name": "Material Output",
+     "height": 100.0,
+     "inputs": [
+      {
+       "name": "Surface",
+       "type": "NodeSocketShader"
+      },
+      {
+       "name": "Volume",
+       "type": "NodeSocketShader"
+      },
+      {
+       "name": "Displacement",
+       "default_value": 0.0,
+       "type": "NodeSocketFloat"
+      }
+     ],
+     "location": [
+      1936.650634765625,
+      1051.3486328125
+     ],
+     "bl_idname": "ShaderNodeOutputMaterial",
+     "outputs": [],
+     "label": "",
+     "width": 140.0
+    },
+    {
+     "name": "Transparent BSDF",
+     "height": 100.0,
+     "inputs": [
+      {
+       "name": "Color",
+       "default_value": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+       ],
+       "type": "NodeSocketColor"
+      }
+     ],
+     "location": [
+      1388.391357421875,
+      981.2410888671875
+     ],
+     "bl_idname": "ShaderNodeBsdfTransparent",
+     "outputs": [
+      {
+       "name": "BSDF",
+       "type": "NodeSocketShader"
+      }
+     ],
+     "label": "",
+     "width": 140.0
+    },
+    {
+     "name": "Emission",
+     "height": 100.0,
+     "inputs": [
+      {
+       "name": "Color",
+       "default_value": [
+        1.0,
+        0.3915724754333496,
+        0.28314879536628723,
+        1.0
+       ],
+       "type": "NodeSocketColor"
+      },
+      {
+       "name": "Strength",
+       "default_value": 1.0,
+       "type": "NodeSocketFloat"
+      }
+     ],
+     "location": [
+      1683.1357421875,
+      765.7313232421875
+     ],
+     "bl_idname": "ShaderNodeEmission",
+     "outputs": [
+      {
+       "name": "Emission",
+       "type": "NodeSocketShader"
+      }
+     ],
+     "label": "",
+     "width": 140.0
+    },
+    {
+     "name": "Mix.007",
+     "height": 100.0,
+     "inputs": [
+      {
+       "name": "Fac",
+       "default_value": 1.0,
+       "type": "NodeSocketFloatFactor"
+      },
+      {
+       "name": "Color1",
+       "default_value": [
+        0.5,
+        0.5,
+        0.5,
+        1.0
+       ],
+       "type": "NodeSocketColor"
+      },
+      {
+       "name": "Color2",
+       "default_value": [
+        0.6297650337219238,
+        0.6297650337219238,
+        0.6297650337219238,
+        1.0
+       ],
+       "type": "NodeSocketColor"
+      }
+     ],
+     "location": [
+      1448.86083984375,
+      796.8992919921875
+     ],
+     "bl_idname": "ShaderNodeMixRGB",
+     "outputs": [
+      {
+       "name": "Color",
+       "default_value": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+       ],
+       "type": "NodeSocketColor"
+      }
+     ],
+     "use_clamp": false,
+     "blend_type": "MIX",
+     "use_alpha": false,
+     "label": "",
+     "width": 140.0
+    },
+    {
+     "name": "Hue Saturation Value",
+     "height": 100.0,
+     "inputs": [
+      {
+       "name": "Hue",
+       "default_value": 0.5,
+       "type": "NodeSocketFloat"
+      },
+      {
+       "name": "Saturation",
+       "default_value": 1.0,
+       "type": "NodeSocketFloat"
+      },
+      {
+       "name": "Value",
+       "default_value": 1.0,
+       "type": "NodeSocketFloat"
+      },
+      {
+       "name": "Fac",
+       "default_value": 1.0,
+       "type": "NodeSocketFloatFactor"
+      },
+      {
+       "name": "Color",
+       "default_value": [
+        0.800000011920929,
+        0.800000011920929,
+        0.800000011920929,
+        1.0
+       ],
+       "type": "NodeSocketColor"
+      }
+     ],
+     "location": [
+      737.2147216796875,
+      502.98309326171875
+     ],
+     "bl_idname": "ShaderNodeHueSaturation",
+     "outputs": [
+      {
+       "name": "Color",
+       "default_value": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+       ],
+       "type": "NodeSocketColor"
+      }
+     ],
+     "label": "",
+     "width": 150.0
+    },
+    {
+     "name": "Math",
+     "height": 100.0,
+     "inputs": [
+      {
+       "name": "Value",
+       "default_value": 0.5,
+       "type": "NodeSocketFloat"
+      },
+      {
+       "name": "Value",
+       "default_value": 2.0,
+       "type": "NodeSocketFloat"
+      }
+     ],
+     "location": [
+      204.201171875,
+      840.4029541015625
+     ],
+     "bl_idname": "ShaderNodeMath",
+     "outputs": [
+      {
+       "name": "Value",
+       "default_value": 0.0,
+       "type": "NodeSocketFloat"
+      }
+     ],
+     "operation": "MULTIPLY",
+     "use_clamp": false,
+     "label": "",
+     "width": 140.0
+    },
+    {
+     "name": "Mix.006",
+     "height": 100.0,
+     "inputs": [
+      {
+       "name": "Fac",
+       "default_value": 0.5,
+       "type": "NodeSocketFloatFactor"
+      },
+      {
+       "name": "Color1",
+       "default_value": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+       ],
+       "type": "NodeSocketColor"
+      },
+      {
+       "name": "Color2",
+       "default_value": [
+        0.2689119577407837,
+        0.04479585215449333,
+        0.01042848639190197,
+        1.0
+       ],
+       "type": "NodeSocketColor"
+      }
+     ],
+     "location": [
+      1284.6044921875,
+      587.0086669921875
+     ],
+     "bl_idname": "ShaderNodeMixRGB",
+     "outputs": [
+      {
+       "name": "Color",
+       "default_value": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+       ],
+       "type": "NodeSocketColor"
+      }
+     ],
+     "use_clamp": false,
+     "blend_type": "MIX",
+     "use_alpha": false,
+     "label": "",
+     "width": 140.0
+    },
+    {
+     "name": "Fresnel.002",
+     "height": 100.0,
+     "inputs": [
+      {
+       "name": "IOR",
+       "default_value": 0.10000000149011612,
+       "type": "NodeSocketFloat"
+      },
+      {
+       "name": "Normal",
+       "default_value": [
+        0.0,
+        0.0,
+        0.0
+       ],
+       "type": "NodeSocketVector"
+      }
+     ],
+     "location": [
+      936.640625,
+      722.0230712890625
+     ],
+     "bl_idname": "ShaderNodeFresnel",
+     "outputs": [
+      {
+       "name": "Fac",
+       "default_value": 0.0,
+       "type": "NodeSocketFloatFactor"
+      }
+     ],
+     "label": "",
+     "width": 140.0
+    },
+    {
+     "name": "eyes_saturation",
+     "height": 100.0,
+     "inputs": [],
+     "location": [
+      -15.798828125,
+      873.1213989257812
+     ],
+     "bl_idname": "ShaderNodeValue",
+     "outputs": [
+      {
+       "name": "Value",
+       "default_value": 1.0000001192092896,
+       "type": "NodeSocketFloat"
+      }
+     ],
+     "label": "eyes_saturation",
+     "width": 140.0
+    },
+    {
+     "name": "eyes_hue",
+     "height": 100.0,
+     "inputs": [],
+     "location": [
+      532.6077880859375,
+      873.7890625
+     ],
+     "bl_idname": "ShaderNodeValue",
+     "outputs": [
+      {
+       "name": "Value",
+       "default_value": 0.5,
+       "type": "NodeSocketFloat"
+      }
+     ],
+     "label": "eyes_hue",
+     "width": 140.0
+    },
+    {
+     "name": "eyes_reflection",
+     "height": 100.0,
+     "inputs": [],
+     "location": [
+      1240.883056640625,
+      784.7328491210938
+     ],
+     "bl_idname": "ShaderNodeValue",
+     "outputs": [
+      {
+       "name": "Value",
+       "default_value": 1.0,
+       "type": "NodeSocketFloat"
+      }
+     ],
+     "label": "eyes_reflection",
+     "width": 140.0
+    },
+    {
+     "name": "eyes_value",
+     "height": 100.0,
+     "inputs": [],
+     "location": [
+      506.56011962890625,
+      702.19921875
+     ],
+     "bl_idname": "ShaderNodeValue",
+     "outputs": [
+      {
+       "name": "Value",
+       "default_value": 1.0,
+       "type": "NodeSocketFloat"
+      }
+     ],
+     "label": "eyes_value",
+     "width": 140.0
+    },
+    {
+     "name": "Anime_mblab_eys_diffuse",
+     "height": 100.0,
+     "projection": "FLAT",
+     "extension": "REPEAT",
+     "location": [
+      339.6969299316406,
+      505.20751953125
+     ],
+     "projection_blend": 0.0,
+     "width": 225.53390502929688,
+     "inputs": [
+      {
+       "name": "Vector",
+       "default_value": [
+        0.0,
+        0.0,
+        0.0
+       ],
+       "type": "NodeSocketVector"
+      }
+     ],
+     "label": "Anime_mblab_eys_diffuse",
+     "bl_idname": "ShaderNodeTexImage",
+     "outputs": [
+      {
+       "name": "Color",
+       "default_value": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+       ],
+       "type": "NodeSocketColor"
+      },
+      {
+       "name": "Alpha",
+       "default_value": 0.0,
+       "type": "NodeSocketFloat"
+      }
+     ],
+     "interpolation": "Linear",
+     "color_space": "COLOR"
+    }
+   ],
+   "links": [
+    {
+     "to_node": "Mix Shader",
+     "to_socket": 1,
+     "from_node": "Transparent BSDF",
+     "from_socket": 0
+    },
+    {
+     "to_node": "Mix Shader",
+     "to_socket": 0,
+     "from_node": "Light Path.001",
+     "from_socket": 0
+    },
+    {
+     "to_node": "Material Output",
+     "to_socket": 0,
+     "from_node": "Mix Shader",
+     "from_socket": 0
+    },
+    {
+     "to_node": "Hue Saturation Value",
+     "to_socket": 4,
+     "from_node": "Anime_mblab_eys_diffuse",
+     "from_socket": 0
+    },
+    {
+     "to_node": "Hue Saturation Value",
+     "to_socket": 0,
+     "from_node": "eyes_hue",
+     "from_socket": 0
+    },
+    {
+     "to_node": "Math",
+     "to_socket": 0,
+     "from_node": "eyes_saturation",
+     "from_socket": 0
+    },
+    {
+     "to_node": "Hue Saturation Value",
+     "to_socket": 2,
+     "from_node": "eyes_value",
+     "from_socket": 0
+    },
+    {
+     "to_node": "Mix Shader",
+     "to_socket": 2,
+     "from_node": "Emission",
+     "from_socket": 0
+    },
+    {
+     "to_node": "Mix.007",
+     "to_socket": 2,
+     "from_node": "Mix.006",
+     "from_socket": 0
+    },
+    {
+     "to_node": "Emission",
+     "to_socket": 0,
+     "from_node": "Mix.007",
+     "from_socket": 0
+    },
+    {
+     "to_node": "Hue Saturation Value",
+     "to_socket": 1,
+     "from_node": "Math",
+     "from_socket": 0
+    },
+    {
+     "to_node": "Mix.007",
+     "to_socket": 0,
+     "from_node": "eyes_reflection",
+     "from_socket": 0
+    },
+    {
+     "to_node": "Mix.006",
+     "to_socket": 0,
+     "from_node": "Fresnel.002",
+     "from_socket": 0
+    },
+    {
+     "to_node": "Mix.006",
+     "to_socket": 2,
+     "from_node": "Hue Saturation Value",
+     "from_socket": 0
+    },
+    {
+     "to_node": "Mix.007",
+     "to_socket": 1,
+     "from_node": "Hue Saturation Value",
+     "from_socket": 0
+    }
+   ]
+  },
+  {
+   "name": "MBlab_toon_black",
+   "diffuse_color": [
+    0.800000011920929,
+    0.800000011920929,
+    0.800000011920929
+   ],
+   "nodes": [
+    {
+     "name": "Light Path.001",
+     "height": 100.0,
+     "inputs": [],
+     "location": [
+      1255.152099609375,
+      1390.392822265625
+     ],
+     "bl_idname": "ShaderNodeLightPath",
+     "outputs": [
+      {
+       "name": "Is Camera Ray",
+       "default_value": 0.0,
+       "type": "NodeSocketFloat"
+      },
+      {
+       "name": "Is Shadow Ray",
+       "default_value": 0.0,
+       "type": "NodeSocketFloat"
+      },
+      {
+       "name": "Is Diffuse Ray",
+       "default_value": 0.0,
+       "type": "NodeSocketFloat"
+      },
+      {
+       "name": "Is Glossy Ray",
+       "default_value": 0.0,
+       "type": "NodeSocketFloat"
+      },
+      {
+       "name": "Is Singular Ray",
+       "default_value": 0.0,
+       "type": "NodeSocketFloat"
+      },
+      {
+       "name": "Is Reflection Ray",
+       "default_value": 0.0,
+       "type": "NodeSocketFloat"
+      },
+      {
+       "name": "Is Transmission Ray",
+       "default_value": 0.0,
+       "type": "NodeSocketFloat"
+      },
+      {
+       "name": "Ray Length",
+       "default_value": 0.0,
+       "type": "NodeSocketFloat"
+      },
+      {
+       "name": "Ray Depth",
+       "default_value": 0.0,
+       "type": "NodeSocketFloat"
+      },
+      {
+       "name": "Diffuse Depth",
+       "default_value": 0.0,
+       "type": "NodeSocketFloat"
+      },
+      {
+       "name": "Glossy Depth",
+       "default_value": 0.0,
+       "type": "NodeSocketFloat"
+      },
+      {
+       "name": "Transparent Depth",
+       "default_value": 0.0,
+       "type": "NodeSocketFloat"
+      },
+      {
+       "name": "Transmission Depth",
+       "default_value": 0.0,
+       "type": "NodeSocketFloat"
+      }
+     ],
+     "label": "",
+     "width": 140.0
+    },
+    {
+     "name": "Mix Shader",
+     "height": 100.0,
+     "inputs": [
+      {
+       "name": "Fac",
+       "default_value": 0.5,
+       "type": "NodeSocketFloatFactor"
+      },
+      {
+       "name": "Shader",
+       "type": "NodeSocketShader"
+      },
+      {
+       "name": "Shader",
+       "type": "NodeSocketShader"
+      }
+     ],
+     "location": [
+      1689.05419921875,
+      1067.3443603515625
+     ],
+     "bl_idname": "ShaderNodeMixShader",
+     "outputs": [
+      {
+       "name": "Shader",
+       "type": "NodeSocketShader"
+      }
+     ],
+     "label": "",
+     "width": 149.0733642578125
+    },
+    {
+     "name": "Material Output",
+     "height": 100.0,
+     "inputs": [
+      {
+       "name": "Surface",
+       "type": "NodeSocketShader"
+      },
+      {
+       "name": "Volume",
+       "type": "NodeSocketShader"
+      },
+      {
+       "name": "Displacement",
+       "default_value": 0.0,
+       "type": "NodeSocketFloat"
+      }
+     ],
+     "location": [
+      1936.650634765625,
+      1051.3486328125
+     ],
+     "bl_idname": "ShaderNodeOutputMaterial",
+     "outputs": [],
+     "label": "",
+     "width": 140.0
+    },
+    {
+     "name": "Transparent BSDF",
+     "height": 100.0,
+     "inputs": [
+      {
+       "name": "Color",
+       "default_value": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+       ],
+       "type": "NodeSocketColor"
+      }
+     ],
+     "location": [
+      1252.516845703125,
+      1089.672607421875
+     ],
+     "bl_idname": "ShaderNodeBsdfTransparent",
+     "outputs": [
+      {
+       "name": "BSDF",
+       "type": "NodeSocketShader"
+      }
+     ],
+     "label": "",
+     "width": 140.0
+    },
+    {
+     "name": "Emission",
+     "height": 100.0,
+     "inputs": [
+      {
+       "name": "Color",
+       "default_value": [
+        0.0,
+        0.0,
+        0.0,
+        1.0
+       ],
+       "type": "NodeSocketColor"
+      },
+      {
+       "name": "Strength",
+       "default_value": 1.0,
+       "type": "NodeSocketFloat"
+      }
+     ],
+     "location": [
+      1254.484130859375,
+      980.97607421875
+     ],
+     "bl_idname": "ShaderNodeEmission",
+     "outputs": [
+      {
+       "name": "Emission",
+       "type": "NodeSocketShader"
+      }
+     ],
+     "label": "",
+     "width": 140.0
+    }
+   ],
+   "links": [
+    {
+     "to_node": "Mix Shader",
+     "to_socket": 1,
+     "from_node": "Transparent BSDF",
+     "from_socket": 0
+    },
+    {
+     "to_node": "Mix Shader",
+     "to_socket": 0,
+     "from_node": "Light Path.001",
+     "from_socket": 0
+    },
+    {
+     "to_node": "Material Output",
+     "to_socket": 0,
+     "from_node": "Mix Shader",
+     "from_socket": 0
+    },
+    {
+     "to_node": "Mix Shader",
+     "to_socket": 2,
+     "from_node": "Emission",
+     "from_socket": 0
+    }
+   ]
+  }
+ ],
+ "copyright": "Manuel Bastioni"
+}

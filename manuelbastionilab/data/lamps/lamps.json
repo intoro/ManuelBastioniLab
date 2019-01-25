@@ -1,0 +1,267 @@
+{
+ "lamps": [
+  {
+   "links": [
+    {
+     "to_node": "Lamp Output",
+     "to_socket": 0,
+     "from_node": "Emission",
+     "from_socket": 0
+    }
+   ],
+   "rotation_mode": "XYZ",
+   "scale": [
+    0.1000000387430191,
+    0.1000000387430191,
+    0.1000000461935997
+   ],
+   "type": "SPOT",
+   "rotation_euler": [
+    -1.1087485551834106,
+    -0.2805505692958832,
+    5.669386386871338
+   ],
+   "shadow_soft_size": 0.10000000149011612,
+   "spot_size": 1.3089969158172607,
+   "nodes": [
+    {
+     "width": 140.0,
+     "inputs": [
+      {
+       "type": "NodeSocketShader",
+       "name": "Surface"
+      }
+     ],
+     "label": "",
+     "name": "Lamp Output",
+     "height": 100.0,
+     "bl_idname": "ShaderNodeOutputLamp",
+     "outputs": [],
+     "location": [
+      300.0,
+      300.0
+     ]
+    },
+    {
+     "width": 140.0,
+     "inputs": [
+      {
+       "default_value": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+       ],
+       "type": "NodeSocketColor",
+       "name": "Color"
+      },
+      {
+       "default_value": 50.0,
+       "type": "NodeSocketFloat",
+       "name": "Strength"
+      }
+     ],
+     "label": "",
+     "name": "Emission",
+     "height": 100.0,
+     "bl_idname": "ShaderNodeEmission",
+     "outputs": [
+      {
+       "type": "NodeSocketShader",
+       "name": "Emission"
+      }
+     ],
+     "location": [
+      10.0,
+      300.0
+     ]
+    }
+   ],
+   "cast_shadow": true,
+   "use_multiple_importance_sampling": false,
+   "spot_blend": 0.15000000596046448,
+   "name": "Lamp_back",
+   "location": [
+    0.4758949279785156,
+    1.1123582124710083,
+    2.0168936252593994
+   ]
+  },
+  {
+   "links": [
+    {
+     "to_node": "Lamp Output",
+     "to_socket": 0,
+     "from_node": "Emission",
+     "from_socket": 0
+    }
+   ],
+   "rotation_mode": "XYZ",
+   "scale": [
+    0.1000000387430191,
+    0.1000000387430191,
+    0.1000000461935997
+   ],
+   "type": "SPOT",
+   "rotation_euler": [
+    -1.2228275537490845,
+    -0.3541560471057892,
+    3.932643175125122
+   ],
+   "shadow_soft_size": 0.10000000149011612,
+   "spot_size": 1.3089969158172607,
+   "nodes": [
+    {
+     "width": 140.0,
+     "inputs": [
+      {
+       "type": "NodeSocketShader",
+       "name": "Surface"
+      }
+     ],
+     "label": "",
+     "name": "Lamp Output",
+     "height": 100.0,
+     "bl_idname": "ShaderNodeOutputLamp",
+     "outputs": [],
+     "location": [
+      300.0,
+      300.0
+     ]
+    },
+    {
+     "width": 140.0,
+     "inputs": [
+      {
+       "default_value": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+       ],
+       "type": "NodeSocketColor",
+       "name": "Color"
+      },
+      {
+       "default_value": 100.0,
+       "type": "NodeSocketFloat",
+       "name": "Strength"
+      }
+     ],
+     "label": "",
+     "name": "Emission",
+     "height": 100.0,
+     "bl_idname": "ShaderNodeEmission",
+     "outputs": [
+      {
+       "type": "NodeSocketShader",
+       "name": "Emission"
+      }
+     ],
+     "location": [
+      10.0,
+      300.0
+     ]
+    }
+   ],
+   "cast_shadow": true,
+   "use_multiple_importance_sampling": false,
+   "spot_blend": 0.15000000596046448,
+   "name": "Lamp_left",
+   "location": [
+    0.860940158367157,
+    -0.6895453929901123,
+    1.8101633787155151
+   ]
+  },
+  {
+   "links": [
+    {
+     "to_node": "Lamp Output",
+     "to_socket": 0,
+     "from_node": "Emission",
+     "from_socket": 0
+    }
+   ],
+   "rotation_mode": "XYZ",
+   "scale": [
+    0.1000000387430191,
+    0.1000000387430191,
+    0.1000000461935997
+   ],
+   "type": "SPOT",
+   "rotation_euler": [
+    -1.222827434539795,
+    -0.3541560769081116,
+    1.948267936706543
+   ],
+   "shadow_soft_size": 0.10000000149011612,
+   "spot_size": 1.3089969158172607,
+   "nodes": [
+    {
+     "width": 140.0,
+     "inputs": [
+      {
+       "type": "NodeSocketShader",
+       "name": "Surface"
+      }
+     ],
+     "label": "",
+     "name": "Lamp Output",
+     "height": 100.0,
+     "bl_idname": "ShaderNodeOutputLamp",
+     "outputs": [],
+     "location": [
+      300.0,
+      300.0
+     ]
+    },
+    {
+     "width": 140.0,
+     "inputs": [
+      {
+       "default_value": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+       ],
+       "type": "NodeSocketColor",
+       "name": "Color"
+      },
+      {
+       "default_value": 25.0,
+       "type": "NodeSocketFloat",
+       "name": "Strength"
+      }
+     ],
+     "label": "",
+     "name": "Emission",
+     "height": 100.0,
+     "bl_idname": "ShaderNodeEmission",
+     "outputs": [
+      {
+       "type": "NodeSocketShader",
+       "name": "Emission"
+      }
+     ],
+     "location": [
+      10.0,
+      300.0
+     ]
+    }
+   ],
+   "cast_shadow": true,
+   "use_multiple_importance_sampling": false,
+   "spot_blend": 0.15000000596046448,
+   "name": "Lamp_right",
+   "location": [
+    -0.9993706345558167,
+    -0.564565122127533,
+    1.8101634979248047
+   ]
+  }
+ ],
+ "copyright": "Manuel Bastioni",
+ "license": "GNU Affero General Public License"
+}
